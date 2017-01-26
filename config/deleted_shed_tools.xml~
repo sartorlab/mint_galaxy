@@ -1,0 +1,10 @@
+<section id="pullali" name="Mint-Pulldown Align" version="">
+  <tool file="toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/a9d4f71dbfb0/bowtie2/bowtie2_wrapper.xml" guid="toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2">
+      <tool_shed>toolshed.g2.bx.psu.edu</tool_shed>
+        <repository_name>bowtie2</repository_name>
+        <repository_owner>devteam</repository_owner>
+        <installed_changeset_revision>a9d4f71dbfb0</installed_changeset_revision>
+        <id>toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2</id>
+        <version>2.2.6.2</version>
+    </tool>
+</section>

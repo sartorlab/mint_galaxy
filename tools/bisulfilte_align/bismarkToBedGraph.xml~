@@ -1,0 +1,11 @@
+<tool id="bismarkToBedGraph" name="Awk command to convert Bismark to Bedgraph" version="0.0">
+    <description>bismark To BedGraph awk command</description>    
+    <command> <![CDATA[ awk -v OFS='\t' '$$5 < 0.05 {print $$1, $$2, $$3, $$7 }' $input | sort -T . -k1,1 -k2,2n > $output
+	]]></command>
+    <inputs>        
+        <param format="txt" name="input" type="data" label="mc_hmc_bisulfite_methylSig"/> 
+   </inputs>
+   <outputs>
+ 	<data format="bedgraph" name="output" label="bedgraph_"/>       
+  </outputs>
+</tool>

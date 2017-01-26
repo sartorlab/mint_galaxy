@@ -1,0 +1,73 @@
+<macros>
+
+    <xml name="multiple_input_bams">
+        <repeat name="input_files" title="Input files" min="2">
+            <param name="inputfile" type="data" 
+                label="input file" 
+                help=""/>
+            <param name="sampleid" type="text" size="30" optional="true" value=""
+                label="Sample id/Name of the sample"
+                help="Label to use in the output. If not given the dataset name will be used instead."/>	
+	<param name="datatype" type="select" label="Data Type">
+		<option value="1" selected="true">Whole Genome bisulfite sequencing</option>	 
+		<option value="0">Reduced representation bisulfite sequencing(RRBS)</option>
+	</param>
+	<param name="group" type="select" label="Group">
+		<option value="1" selected="true">GroupA</option>	 
+		<option value="0">GroupB</option>
+	</param>
+          </repeat>
+    </xml>
+
+    <token name="@multiple_input_bams@">
+        #import tempfile
+        #set $temp_dir = os.path.abspath(tempfile.mkdtemp())
+        #set files=[]
+        #set labels=[]
+	#set a ='test'
+	
+        #for $i in $input_files:
+	  
+            #set $temp_input_handle = tempfile.NamedTemporaryFile( dir=$temp_dir )
+            #set $temp_input_path = $temp_input_handle.name
+            #silent $temp_input_handle.close() 
+            #if str($i.sampleid.value) != "":
+                #set $labels += ["\"%s\"" % ($i.sampleid)]
+            #else
+                #set $labels += ["\"%s\"" % ($i.bamfile.name)]
+            #end if
+        #end for
+    </token>
+
+ <xml name="multiple_input_pepr">
+        <repeat name="input_files" title="Input files" min="2">
+            <param name="inputfile" type="data" 
+                label="input file" 
+                help=""/>
+            </repeat>
+    </xml>
+
+    <token name="@multiple_input_pepr@">
+        #import tempfile
+        #set $temp_dir = os.path.abspath(tempfile.mkdtemp())
+        #set files=[]
+        #set labels=[]
+	#set a ='test'
+	
+        #for $i in $input_files:
+	  
+            #set $temp_input_handle = tempfile.NamedTemporaryFile( dir=$temp_dir )
+            #set $temp_input_path = $temp_input_handle.name
+            #silent $temp_input_handle.close() 
+            #if str($i.inputfile.value) != "":
+                #set $labels += ["\"%s\"" % ($i.inputfile)]
+            #else
+                #set $labels += ["\"%s\"" % ($i.bamfile.name)]
+            #end if
+        #end for
+    </token>
+
+
+
+
+</macros>

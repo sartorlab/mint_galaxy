@@ -1,0 +1,139 @@
+<tool id="fa_gc_content_2" name="MethylSig ">
+  <description>for each sequence in a file</description>
+ 	<macros>
+      
+        <import>methylsig_macros.xml</import>
+    </macros>
+
+  	<command detect_errors="exit_code"><![CDATA[
+                    Rscript /home/snehal/Galaxy/galaxy/tools/MethylSig/methylTest.R "						      
+		   -assembly ${assembly};
+	    	   -destrand ${destrand};
+                   -numcores ${numcores};
+                   -context ${context};
+		   -output ${output};
+		   -tile ${tile_analysis_type.tile};
+		   -dist_est ${dist_est};
+		   -tilesize ${tile_analysis_type.tilesize};
+		   -disp ${dispersion_analysis_type.disp};
+		   -dwsize ${dispersion_analysis_type.dwsize};
+  		   -methyl ${methylation_analysis_type.methyl};
+		   -mwsize ${methylation_analysis_type.mwsize};
+		   -groupas ${groupas};
+		   -groupbs ${groupbs};
+		   -resolution ${resolution};
+		   -maxcount ${maxcount};
+		   -mincount  ${mincount};
+		   -filterSNPs  ${filterSNPs};
+		   -quiet  ${quiet};
+	 	#for $i, $s in enumerate( $input_files )
+		    -ifile ${s.input.file_name};
+		    -sid ${s.sampleid};
+		    -datatype ${s.datatype};
+		#end for
+"
+	  ]]></command>  
+     	
+	
+      <inputs>
+	<param name="groupa" size="30" type="text" value="GroupA" label="Enter group A name" display="radio"/>
+	<param name="groupb" size="30" type="text" value="GroupB" label="enter group b name" display="radio"/>
+	
+	
+	 <repeat name="input_files" title="Input files" min="2">
+        <param name="input" type="data" format="bed,txt" label="Dataset"/>
+        <param name="sampleid" type="text" size="30" optional="true" value=""
+                label="Sample id/Name of the sample"
+                help="Label to use in the output. If not given the dataset name will be used instead."/>
+	<param name="datatype" type="select" label="Data Type">
+		<option value="1" selected="true">Whole Genome bisulfite sequencing</option>	 
+		<option value="0">Reduced representation bisulfite sequencing(RRBS)</option>
+	</param>
+	<param name="group" type="select" label="Group">
+		<option value="1" selected="true">GroupA</option>	 
+		<option value="0">GroupB</option>
+	</param>
+          </repeat>
+	<param name="assembly" type="select" label="Reference genome version">
+	    <option value="hg18" selected="true">Human(hg18)</option>
+	    <option value="hg19">Human(hg19)</option>
+	    <option value="mm9">Mouse(mm9)</option>
+	    <option value="mm10">Mouse(mm10)</option>
+	    <option value="rn4">Rat(rn4)</option>
+	</param>
+	<param name="destrand" type="select" label="Destranded?">
+	    <option value="TRUE" selected="true">True</option>	 
+	    <option value="FALSE">False</option>
+	</param>
+	<param name="numcores" size="30" type="integer" value="2" label="Number of cores" display="radio"/>
+	<param name="context" type="select" label="Context">
+	    <option value="5mcCpG" selected="true">5mc CpG</option>
+	    <option value="5hmCCpG">5hmC CpG</option>
+	    <option value="5mCCpH">5mC CpH</option>	  
+	</param>
+	
+	<conditional name="tile_analysis_type">
+	      <param name="tile" type="select" label="Tile Analysis">
+		<option value="TRUE">Yes</option>
+		<option value="FALSE">No</option>
+	      </param>
+	      <when value="TRUE">
+	      <param name="tilesize" size="30" type="integer" value="100" label="Window Size" display="radio"/>
+	      </when>     
+       </conditional>
+	<param name="dist_est" type="select" label="Dispersion Estimate Method">
+	    <option value="both" selected="true">Both groups</option>
+	    <option value="1">Group A only</option>
+	    <option value="0">Groub B Only</option>	  
+	</param>
+       <conditional name="dispersion_analysis_type">
+	      <param name="disp" type="select" label="Use local information for dispersion">
+		<option value="TRUE">Yes</option>
+		<option value="FALSE">No</option>
+	      </param>
+	      <when value="TRUE">
+	      <param name="dwsize" size="30" type="integer" value="200" label="Local Dispersion" display="radio"/>
+	      </when>     
+       </conditional>
+	<conditional name="methylation_analysis_type">
+	      <param name="methyl" type="select" label="Use local information for methylation">
+		<option value="TRUE">Yes</option>
+		<option value="FALSE">No</option>
+	      </param>
+	      <when value="TRUE">
+	      <param name="mwsize" size="30" type="integer" value="200" label="Local Methylation" display="radio"/>
+	      </when>     
+       </conditional>
+       
+	    <param name="groupas" size="30" type="integer" value="100" label="Minimum # samples per group to test CpG Group A" />
+            <param name="groupbs" size="30" type="integer" value="100" label=" Minimum # samples per group to test CpG Group B" />
+	    <param name="resolution" size="30" type="text" value="base" label="resolution"/>
+	    <param name="maxcount" size="30" type="integer" value="500" label="maxcount" display="radio"/>
+            <param name="mincount" size="30" type="integer" value="5" label="maxcount" display="radio"/>
+            <param name="filterSNPs" type="select" label="filterSNPs">
+		<option value="TRUE">Yes</option>
+		<option value="FALSE">No</option>
+	    </param>
+            <param name="quiet" type="select" label="quiet">
+		<option value="TRUE">Yes</option>
+		<option value="FALSE">No</option>
+	    </param>
+       </inputs>
+       <outputs>
+                  <data format="tabular" name="output" />
+		 
+			
+
+        </outputs>
+	<test>
+		 <param name="tile" value="yes" />
+	</test>
+
+
+
+  <help>
+  This function is to read CpG methylation score files and convert these files into a ‘methylSigData’ object for further analysis and annotation.
+  meth = methylSigReadData(fileList, sample.ids = sample.id, assembly = "hg18", treatment = treatment, context = "CpG", destranded=TRUE)
+    </help>
+
+</tool>

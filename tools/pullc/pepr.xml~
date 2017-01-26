@@ -1,0 +1,174 @@
+<tool id="pepr" name="Run PePr">
+  <description>ChIP-Seq Peak-calling and Prioritization pipeline (PePr)</description>
+   <requirements>
+  <requirement type="package" version="bf9e356ddc03baae25f291acf9463d7ae0821b93">PePr</requirement>
+  <requirement type="set_environment">python-irodsclient</requirement>  
+  </requirements>
+   
+
+
+    <macros>      
+        <import>methylsig_macros.xml</import>
+    </macros>
+ <command interpreter="python">
+<![CDATA[
+	runpepr_Mac_v1.py
+	 #for $i, $s in enumerate( $format.groupa.input_GrpA )
+	    --o "$i"
+	    --i1 ${s.inputA.file_name}
+	    --c1 ${s.chipA.file_name}   
+	#end for
+	#for $i, $s in enumerate( $format.groupb.input_GrpB )
+	    --o "$i"
+	    --i2 ${s.inputB.file_name}
+	    --c2 ${s.chipB.file_name}   
+	#end for	
+	   --expName ${expName}
+           --format ${format.formatfile}
+	   --peakType ${peaktype}
+           --thresh ${t}
+	   --removeArt ${remove_artefacts}
+	   --rd_dup ${remove_duplicate}
+           --maxdup ${maxdup}
+	   --diff ${diff}
+	   --o1 ${PePr_chip1}
+	   --o2 ${PePr_chip2}
+           --o3 ${PePr_parameters}	  
+
+]]>
+	
+  </command>
+  <inputs>
+   <conditional name="format">
+            <param label="Choose the file format" name="formatfile" type="select">
+                <option value="bam">bam</option>
+                <option value="bed">bed</option>
+		<option value="sam">sam</option>
+            </param>
+  <when value="bed">
+	  <section name="groupa" title="Group A" expanded="True">
+	     <repeat name="input_GrpA" title="Group A" min="1">
+		    <param name="inputA" type="data" 
+		        label="input file" format="bed"
+		        help=""/>
+		     <param name="chipA" type="data" 
+		        label="Chip File" format="bed"
+		        help=""/>
+	    </repeat>
+	  </section>
+	  <section name="groupb" title="Group B" expanded="True">
+	     <repeat name="input_GrpB" title="Group B" min="1">
+		    <param name="inputB" type="data" 
+		        label="input file" format="bed"
+		        help=""/>
+		     <param name="chipB" type="data" 
+		        label="Chip File" format="bed"
+		        help=""/>
+	    </repeat>
+	   </section>
+    </when>
+   <when value="bam">
+	  <section name="groupa" title="Group A" expanded="True">
+	     <repeat name="input_GrpA" title="Group A" min="1">
+		    <param name="inputA" type="data" 
+		        label="input file" format="bam"
+		        help=""/>
+		     
+		     <param name="chipA" type="data" 
+		        label="Chip File" format="bam"
+		        help=""/>
+	    </repeat>
+	  </section>
+	  <section name="groupb" title="Group B" expanded="True">
+	     <repeat name="input_GrpB" title="Group B" min="1">
+		    <param name="inputB" type="data" 
+		        label="input file" format="bam"
+		        help=""/>		   
+		     <param name="chipB" type="data" 
+		        label="Chip File" format="bam"
+		        help=""/>
+	    </repeat>
+	   </section>
+    </when>
+   <when value="sam">
+	  <section name="groupa" title="Group A" expanded="True">
+	     <repeat name="input_GrpA" title="Group A" min="1">
+		    <param name="inputA" type="data" 
+		        label="input file" format="sam"
+		        help=""/>
+		     <param name="chipA" type="data" 
+		        label="Chip File" format="sam"
+		        help=""/>
+	    </repeat>
+	  </section>
+	  <section name="groupb" title="Group B" expanded="True">
+	     <repeat name="input_GrpB" title="Group B" min="1">
+		    <param name="inputB" type="data" 
+		        label="input file" format="sam"
+		        help=""/>
+		     <param name="chipB" type="data" 
+		        label="Chip File" format="sam"
+		        help=""/>
+	    </repeat>
+	   </section>
+     </when>
+     </conditional>
+    <param name="expName" size="20" type="text" value="NA" label="Experirment Name"/>
+    
+    <param name="peaktype" type="select" label="Peak Type" help=" PePr treats broad peaks (like H3k27me3) and sharp peaks(like most transcriptions factors) slightly different. " >
+      <option value="sharp">sharp</option>
+      <option value="broad">broad</option>
+    </param>  
+
+    <param name="t"   size="20" type="float" min="0" max="0.05" value="0.00001" label="Threshold"/>
+    <param name="remove_artefacts" type="select" label="Remove_artefacts" help="Remove peaks that are caused by PCR duplicates." >
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </param>    
+    <param name="remove_duplicate" type="select" label="Remove_duplicate" help="maximum number of duplicated reads at each single position to keep. If not specified, will not remove any duplicate." >
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </param>
+     <param name="normalization" type="select" label="normalization" help="Default is intra-group for peak-calling and inter-group for differential binding analysis. PePr is using a modified TMM method to normalize for the difference in IP efficiencies between samples (see the supplementary methods of the paper)." >
+      <option value="intra-group">intra-group</option>
+      <option value="inter-group">inter-group</option>
+      <option value="intra-group">scale</option>
+      <option value="inter-group">no</option>
+
+    </param>
+
+    <param name="maxdup"   size="20" type="integer" value="0" label=" maximum number of duplicated reads"/>
+ 
+ <param name="diff" type="select" label="diff" help="Whether to perform differential binding analysis. If so, please provide chip2 and input2 samples as well. " >
+      <option value="true">True</option>
+      <option value="false">False</option>
+   </param> 
+  </inputs>
+  <outputs>
+	<data format="bed" name="PePr_chip1" label="${expName}_PePr_chip1.bed" />
+	<data format="bed" name="PePr_chip2" label="${expName}_PePr_chip2.bed" />	 	
+	<data format="txt" name="PePr_parameters" label="${expName}_PePr_parameters.txt" />	
+  </outputs>
+
+   <tests>
+    <test>
+     
+    </test>
+  </tests>
+  <help>
+
+For transcription factors, we recommend the following options:
+python path/PePr.py -i inputFiles -c chipFiles -n ExperimentName -f format --peaktype=sharp --remove_artefacts
+
+For histone modifications that are expected to cover large genomic regions, we recommend the following options:
+python path/PePr.py -i inputFiles -c chipFiles -n ExperimentName -f format --peaktype=broad  --remove_artefacts
+
+For differential binding analysis of transcription factors:
+python path/PePr.py -i inputFiles_group1 --input2 inputFiles_group2 -c chipFiles_group1 --chip2 chipFiles_group2 -n ExperrrimentName -f format --peaktype=sharp --diff --remove_artefacts
+
+Example of exact command for a transcription factor with two input files and two ChIP files:
+
+
+python ../PePr.py -i input_rep1.bed,input_rep2.bed -c chip_rep1.bed,chip_rep2.bed -f bed -s 48,46 -w 180 -n my_test_run
+</help>
+</tool>

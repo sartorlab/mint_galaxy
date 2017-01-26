@@ -1,0 +1,26 @@
+<tool id="bissamclass" name=" Intermediates for the bisulfite piece" version="0">
+  <description>CIntermediates for the bisulfite piece</description>
+  <command>
+    <![CDATA[
+       awk -v MIN_COV=$(OPT_MIN_COV) -v himeth=$himeth -v lowmeth=$lowmeth -v nomethsignal=$nomethsignal -v nomethnosignal=$nomethnosignal -f /home/snehal/Galaxy/galaxyLatest/galaxy/tools/sample_classification/classify_prepare_bisulfite_sample.awk $CpGreport 
+       
+    ]]>
+    </command>
+    <inputs>
+        <param name="OPT_MIN_COV" size="2" type="integer" value="1" label="OPT_MIN_COV" />           
+       <param format="tabular" name="CpGreport" type="data" label="CpG_report from Bismark MEthyl Exctractor."/>           
+    </inputs>
+    <outputs>
+       	<data format="tabular" name="himeth" label="himeth"/>
+	<data format="tabular" name="lowmeth" label="lowmeth"/>
+	<data format="tabular" name="nomethsignal" label="nomethsignal"/>
+	<data format="tabular" name="nomethnosignal" label="nomethnosignal"/>
+    </outputs>    
+    <help>
+<![CDATA[
+Intermediates for the bisulfite piece
+
+]]>
+  </help>
+  
+</tool>

@@ -1,0 +1,28 @@
+<tool id="align_single" name="Bowtie2(Version 2.2.5)" version="0.0">
+    <!-- Wrapper compatible with Bowtie version 2.2.4 -->
+
+    <description>Bowtie2(Version 2.2.5)</description>    
+      <version_command>bowtie2 --version</version_command>
+    <requirements>
+        <requirement type="package" version="2.2.5">bowtie2</requirement>
+        <requirement type="package" version="0.1.19">samtools</requirement>
+    </requirements>
+     <stdio>
+        <exit_code range="1:" />
+        <exit_code range=":-1" />
+        <regex match="Error:" />
+        <regex match="Exception:" />
+    </stdio>
+  
+    <command interpreter="bash">multi_output_configured_4.sh $report ${projectname} ${sampleid} ${data_file.file_name} ${humanid} 
+     </command>
+    <inputs>
+	<param name="projectname" type="text" size="30" optional="true" value="" label="Project Name" help="Label to use in the output. If not given the dataset name will be used instead."/>
+	<param name="sampleid" type="text" size="30" optional="true" value="" label="Sample id/Name of the sample" help="Label to use in the output. If not given the dataset name will be used instead."/>
+	<param name="data_file" type="data" format="fasta,fa,fastq.gz,fastq.bz2" label="Read file" help="Sequence data" />
+	<param name="humanid" type="text" size="30" optional="true" value="" label="Human readable name" help="Label to use in the output. If not given the dataset name will be used instead."/>
+   </inputs>
+   <outputs>
+ 	<data format="sam" name="report" label="#echo os.path.splitext ( str ( $data_file.name ) ) [ 0 ] #.sam" />	
+  </outputs>
+</tool>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<tables>
+<table comment_char="#" name="fasta_indexes">
+        <columns>value, dbkey, name, path</columns>
+        <file path="/home/snehal/Galaxy/galaxyLatest/galaxy/tool-data/fasta_indexes.loc" />
+        <tool_shed_repository>
+            <tool_shed>toolshed.g2.bx.psu.edu</tool_shed>
+            <repository_name>sam_to_bam</repository_name>
+            <repository_owner>devteam</repository_owner>
+            <installed_changeset_revision>881e16ad05c6</installed_changeset_revision>
+            </tool_shed_repository>
+    </table>
+<table comment_char="#" name="bowtie2_indexes">
+        <columns>value, dbkey, name, path</columns>
+        <file path="/home/snehal/Galaxy/galaxyLatest/galaxy/tool-data/toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/a9d4f71dbfb0/bowtie2_indices.loc" />
+        <tool_shed_repository>
+            <tool_shed>toolshed.g2.bx.psu.edu</tool_shed>
+            <repository_name>bowtie2</repository_name>
+            <repository_owner>devteam</repository_owner>
+            <installed_changeset_revision>a9d4f71dbfb0</installed_changeset_revision>
+            </tool_shed_repository>
+    </table>
+<table comment_char="#" name="bowtie_indexes">
+        <columns>value, dbkey, name, path</columns>
+        <file path="/home/snehal/Galaxy/galaxyLatest/galaxy/tool-data/toolshed.g2.bx.psu.edu/repos/bgruening/bismark/0f8646f22b8d/bowtie_indices.loc" />
+        <tool_shed_repository>
+            <tool_shed>toolshed.g2.bx.psu.edu</tool_shed>
+            <repository_name>bismark</repository_name>
+            <repository_owner>bgruening</repository_owner>
+            <installed_changeset_revision>0f8646f22b8d</installed_changeset_revision>
+            </tool_shed_repository>
+    </table>
+<table comment_char="#" name="bowtie2_indexes">
+        <columns>value, dbkey, name, path</columns>
+        <file path="/home/snehal/Galaxy/galaxyLatest/galaxy/tool-data/toolshed.g2.bx.psu.edu/repos/bgruening/bismark/0f8646f22b8d/bowtie2_indices.loc" />
+        <tool_shed_repository>
+            <tool_shed>toolshed.g2.bx.psu.edu</tool_shed>
+            <repository_name>bismark</repository_name>
+            <repository_owner>bgruening</repository_owner>
+            <installed_changeset_revision>0f8646f22b8d</installed_changeset_revision>
+            </tool_shed_repository>
+    </table>
+</tables>
