@@ -1,0 +1,187 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "bisulfite_compare", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 165
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "716ecf1a-16d7-4336-a41a-0091b50cbbce", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "annotatr_claasification_bismark", 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Annotatr classification", 
+                    "name": "infile"
+                }
+            ], 
+            "label": null, 
+            "name": "Annotatr classification", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 1193.0000305175781, 
+                "top": 168
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "annotatr_claasification_bismark", 
+            "tool_state": "{\"__page__\": 0, \"projectname\": \"\\\"mc_hmc\\\"\", \"__rerun_remap_job_id__\": null, \"group1\": \"\\\"NULL\\\"\", \"group0\": \"\\\"NULL\\\"\", \"genome\": \"\\\"hg19\\\"\", \"infile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"annot_type\": \"\\\"bismark\\\"\"}", 
+            "tool_version": "0.0", 
+            "type": "tool", 
+            "uuid": "9832b0ad-e24c-4edc-93f8-115cb719f876", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bismark/bismark_methylation_extractor/0.10.2", 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Bismark Meth. Extractor", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Bismark Meth. Extractor", 
+            "outputs": [
+                {
+                    "name": "o_report", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "compressed_output", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "CHG_OB", 
+                    "type": "gz"
+                }, 
+                {
+                    "name": "CHG_OT", 
+                    "type": "gz"
+                }, 
+                {
+                    "name": "CHH_OB", 
+                    "type": "gz"
+                }, 
+                {
+                    "name": "CHH_OT", 
+                    "type": "gz"
+                }, 
+                {
+                    "name": "CpG_OB", 
+                    "type": "gz"
+                }, 
+                {
+                    "name": "CpG_OT", 
+                    "type": "gz"
+                }, 
+                {
+                    "name": "bedGraph", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "bismark", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "M_bias", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 408, 
+                "top": 160
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bismark/bismark_methylation_extractor/0.10.2", 
+            "tool_shed_repository": {
+                "changeset_revision": "0f8646f22b8d", 
+                "name": "bismark", 
+                "owner": "bgruening", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"ignore_bps\": \"\\\"0\\\"\", \"singlePaired\": \"{\\\"sPaired\\\": \\\"single\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "0.10.2", 
+            "type": "tool", 
+            "uuid": "a85a8cfc-41c3-4bf4-9a1a-c9e96561d65a", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "bismarkToBedGraph", 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "bedGraph"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Awk command to convert Bismark to Bedgraph", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Awk command to convert Bismark to Bedgraph", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bedgraph"
+                }
+            ], 
+            "position": {
+                "left": 814.0000305175781, 
+                "top": 378
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "bismarkToBedGraph", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "0.0", 
+            "type": "tool", 
+            "uuid": "91443752-5ee2-4c82-b47f-d4826037720a", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "d3fabfbe-4b10-47a2-af07-52f713b6e122"
+}

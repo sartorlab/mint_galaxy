@@ -1,0 +1,288 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "pulldown_compare", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 233.5, 
+                "top": 272
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "a17bef07-72f7-4873-ba4b-2982a7ed159e", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 340.5, 
+                "top": 206
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "0343deab-3cfe-475f-b793-abe5d7a06a3f", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 274.5, 
+                "top": 349
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "023e8901-d4c3-44ab-bcc1-e51eda03dc6d", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 3, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 307.5, 
+                "top": 432
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "8975a925-1d5e-4d09-a234-b2a53ccc1ed2", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "pepr", 
+            "id": 4, 
+            "input_connections": {
+                "format|groupa|input_GrpA_0|chipA": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "format|groupa|input_GrpA_0|inputA": {
+                    "id": 1, 
+                    "output_name": "output"
+                }, 
+                "format|groupb|input_GrpB_0|chipB": {
+                    "id": 3, 
+                    "output_name": "output"
+                }, 
+                "format|groupb|input_GrpB_0|inputB": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Run PePr", 
+            "outputs": [
+                {
+                    "name": "PePr_chip1", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "PePr_chip2", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "PePr_parameters", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 552.5, 
+                "top": 206
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "pepr", 
+            "tool_state": "{\"__page__\": 0, \"remove_artefacts\": \"\\\"true\\\"\", \"format\": \"{\\\"groupa\\\": {\\\"input_GrpA\\\": [{\\\"__index__\\\": 0, \\\"inputA\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"chipA\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}]}, \\\"formatfile\\\": \\\"bam\\\", \\\"__current_case__\\\": 1, \\\"groupb\\\": {\\\"input_GrpB\\\": [{\\\"inputB\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__index__\\\": 0, \\\"chipB\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}]}}\", \"__rerun_remap_job_id__\": null, \"maxdup\": \"\\\"0\\\"\", \"peaktype\": \"\\\"sharp\\\"\", \"remove_duplicate\": \"\\\"true\\\"\", \"expName\": \"\\\"NA\\\"\", \"t\": \"\\\"1e-05\\\"\", \"diff\": \"\\\"true\\\"\", \"normalization\": \"\\\"intra-group\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "ccefa120-f071-4327-a834-2d6e08a78398", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "peprcomb", 
+            "id": 5, 
+            "input_connections": {
+                "chippeak1": {
+                    "id": 4, 
+                    "output_name": "PePr_chip1"
+                }, 
+                "chippeak2": {
+                    "id": 4, 
+                    "output_name": "PePr_chip2"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Rule to combine PePr peaks for bigBed", 
+                    "name": "chippeak1"
+                }, 
+                {
+                    "description": "runtime parameter for tool Rule to combine PePr peaks for bigBed", 
+                    "name": "chippeak2"
+                }
+            ], 
+            "label": null, 
+            "name": "Rule to combine PePr peaks for bigBed", 
+            "outputs": [
+                {
+                    "name": "peprCombinedBB", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "PePrCombinedAnnt", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 827.5, 
+                "top": 205
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "peprcomb", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"chippeak1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chippeak2\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chip2\": \"\\\"NA\\\"\", \"chip1\": \"\\\"NA\\\"\"}", 
+            "tool_version": "0", 
+            "type": "tool", 
+            "uuid": "543c49d0-a755-406c-8458-41c1df8b5576", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "bed_to_bigBed", 
+            "id": 6, 
+            "input_connections": {
+                "input1": {
+                    "id": 5, 
+                    "output_name": "peprCombinedBB"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool BED-to-bigBed", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "BED-to-bigBed", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "bigbed"
+                }
+            ], 
+            "position": {
+                "left": 1190.5, 
+                "top": 209
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "bed_to_bigBed", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"settings\": \"{\\\"settingsType\\\": \\\"preset\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "eaa3426f-b98f-4f43-a983-72a361851252", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "content_id": "annotatr_claasification_bismark", 
+            "id": 7, 
+            "input_connections": {
+                "infile": {
+                    "id": 5, 
+                    "output_name": "PePrCombinedAnnt"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Annotatr classification", 
+                    "name": "infile"
+                }
+            ], 
+            "label": null, 
+            "name": "Annotatr classification", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 1183, 
+                "top": 352
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "annotatr_claasification_bismark", 
+            "tool_state": "{\"__page__\": 0, \"projectname\": \"\\\"mc_hmc\\\"\", \"__rerun_remap_job_id__\": null, \"group1\": \"\\\"NULL\\\"\", \"group0\": \"\\\"NULL\\\"\", \"genome\": \"\\\"hg19\\\"\", \"infile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"annot_type\": \"\\\"PePr\\\"\"}", 
+            "tool_version": "0.0", 
+            "type": "tool", 
+            "uuid": "5ede19b6-cd68-4181-912c-8481f2d3d63d", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "f7ad170e-592d-43b5-a89d-3baa9abb6f92"
+}

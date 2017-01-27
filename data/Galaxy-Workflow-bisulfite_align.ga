@@ -1,0 +1,326 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "bisulfite_align", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 289, 
+                "top": 200
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "6e261135-7b60-49ed-93a4-8b8660043ebf", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
+            "id": 1, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "contaminants"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "limits"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 321.11669921875, 
+                "top": 390.23333740234375
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
+            "tool_shed_repository": {
+                "changeset_revision": "3fdc1a74d866", 
+                "name": "fastqc", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.65", 
+            "type": "tool", 
+            "uuid": "b8bf4156-dc89-43a6-92b8-5171e291678b", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "id": 2, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ Groomer", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FASTQ Groomer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "fastqsanger"
+                }
+            ], 
+            "position": {
+                "left": 492.61669921875, 
+                "top": 201.11666870117188
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "tool_shed_repository": {
+                "changeset_revision": "e4d28c94242d", 
+                "name": "fastq_groomer", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "1.0.4", 
+            "type": "tool", 
+            "uuid": "fa40d79c-dc0b-4bab-926b-3e0ae0d8dc9f", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/trim_galore/trim_galore/0.4.2", 
+            "id": 3, 
+            "input_connections": {
+                "singlePaired|input_singles": {
+                    "id": 2, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Trim Galore!", 
+                    "name": "singlePaired"
+                }
+            ], 
+            "label": null, 
+            "name": "Trim Galore!", 
+            "outputs": [
+                {
+                    "name": "trimmed_reads_paired_collection", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "trimmed_reads_unpaired_collection", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "trimmed_reads_single", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "trimmed_reads_pair1", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "trimmed_reads_pair2", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "unpaired_reads_1", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "unpaired_reads_2", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "report_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 790, 
+                "top": 238
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/trim_galore/trim_galore/0.4.2", 
+            "tool_shed_repository": {
+                "changeset_revision": "f1e71aeaa923", 
+                "name": "trim_galore", 
+                "owner": "bgruening", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"params\": \"{\\\"settingsType\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\", \"rrbs\": \"{\\\"settingsType\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\", \"singlePaired\": \"{\\\"three_prime_clip_R1\\\": \\\"\\\", \\\"trimming\\\": {\\\"trimming_select\\\": \\\"\\\", \\\"__current_case__\\\": 0}, \\\"sPaired\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_singles\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\"}", 
+            "tool_version": "0.4.2", 
+            "type": "tool", 
+            "uuid": "f034d763-9f53-4a82-aa6c-00c697b14c91", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
+            "id": 4, 
+            "input_connections": {
+                "input_file": {
+                    "id": 2, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "contaminants"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "limits"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 737.11669921875, 
+                "top": 561.2333679199219
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
+            "tool_shed_repository": {
+                "changeset_revision": "3fdc1a74d866", 
+                "name": "fastqc", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.65", 
+            "type": "tool", 
+            "uuid": "2e43ea86-10e7-4a21-89bc-697a4a629bba", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bismark/bismark_bowtie2/0.10.2", 
+            "id": 5, 
+            "input_connections": {
+                "singlePaired|input_singles": {
+                    "id": 3, 
+                    "output_name": "trimmed_reads_single"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Bismark", 
+                    "name": "singlePaired"
+                }
+            ], 
+            "label": null, 
+            "name": "Bismark", 
+            "outputs": [
+                {
+                    "name": "report_file", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "output_stdout", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "output", 
+                    "type": "bam"
+                }, 
+                {
+                    "name": "output_suppressed_reads_l", 
+                    "type": "fastq"
+                }, 
+                {
+                    "name": "output_suppressed_reads_r", 
+                    "type": "fastq"
+                }, 
+                {
+                    "name": "output_unmapped_reads_l", 
+                    "type": "fastq"
+                }, 
+                {
+                    "name": "output_unmapped_reads_r", 
+                    "type": "fastq"
+                }
+            ], 
+            "position": {
+                "left": 1092.11669921875, 
+                "top": 321.1166687011719
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bismark/bismark_bowtie2/0.10.2", 
+            "tool_shed_repository": {
+                "changeset_revision": "0f8646f22b8d", 
+                "name": "bismark", 
+                "owner": "bgruening", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"singlePaired\": \"{\\\"sPaired\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_singles\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"__rerun_remap_job_id__\": null, \"params\": \"{\\\"settingsType\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\", \"sort_bam\": \"\\\"false\\\"\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"indexed\\\", \\\"index\\\": \\\"hg19\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "0.10.2", 
+            "type": "tool", 
+            "uuid": "5b6d4b83-2793-450c-a8ce-49dbb5d3c55c", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "79255d3f-475e-44d7-9fca-ce320f5ac66f"
+}
