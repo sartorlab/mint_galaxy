@@ -1,0 +1,394 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "Workflow for sample classification", 
+    "format-version": "0.1", 
+    "name": " sample_classification", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Output from the BME CpG report file"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Output from the BME CpG report file\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "e3be23d5-58b7-4aff-a842-77dbad7af48b", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Macs2 Narrowpeak"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 285.76666259765625
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Macs2 Narrowpeak\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "ace8389c-9f73-4933-a615-18a3efe190c1", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Bedgraph file from pulldown align step"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 371.53334045410156
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Bedgraph file from pulldown align step\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "288b27ff-e335-4f23-a0d4-5de586a0de9d", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 3, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "genome file chromeInfo Hg19"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 457.29998779296875
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"genome file chromeInfo Hg19\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "742cafad-7112-4f15-9ff5-eb8f828a009d", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "bissamclass", 
+            "id": 4, 
+            "input_connections": {
+                "CpGreport": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool  Intermediates for the bisulfite piece", 
+                    "name": "CpGreport"
+                }
+            ], 
+            "label": null, 
+            "name": " Intermediates for the bisulfite piece", 
+            "outputs": [
+                {
+                    "name": "himeth", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "lowmeth", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "nomethsignal", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "nomethnosignal", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 427.76666259765625, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "bissamclass", 
+            "tool_state": "{\"OPT_MIN_COV\": \"\\\"1\\\"\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"CpGreport\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0", 
+            "type": "tool", 
+            "uuid": "bdb6ac57-2419-4424-9087-b8887c30803c", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "bedtoolsformint", 
+            "id": 5, 
+            "input_connections": {
+                "macNarrowPeak": {
+                    "id": 1, 
+                    "output_name": "output"
+                }, 
+                "pullAli": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Combined all bedtools for mint", 
+                    "name": "macNarrowPeak"
+                }, 
+                {
+                    "description": "runtime parameter for tool Combined all bedtools for mint", 
+                    "name": "pullAli"
+                }
+            ], 
+            "label": null, 
+            "name": "Combined all bedtools for mint", 
+            "outputs": [
+                {
+                    "name": "peak", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "signal", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "nopeak", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "nosignal", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "nopeaksignal", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "nopeaknosignal", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 427.76666259765625, 
+                "top": 412.76666259765625
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "bedtoolsformint", 
+            "tool_state": "{\"macNarrowPeak\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"pullAli\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.0", 
+            "type": "tool", 
+            "uuid": "bb4fa274-ea89-41bd-a7df-cf3ea0ba5707", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "classification_tabular", 
+            "id": 6, 
+            "input_connections": {
+                "genome": {
+                    "id": 3, 
+                    "output_name": "output"
+                }, 
+                "himeth": {
+                    "id": 4, 
+                    "output_name": "himeth"
+                }, 
+                "lowmeth": {
+                    "id": 4, 
+                    "output_name": "lowmeth"
+                }, 
+                "nomethnosignal": {
+                    "id": 4, 
+                    "output_name": "nomethnosignal"
+                }, 
+                "nomethsignal": {
+                    "id": 4, 
+                    "output_name": "nomethsignal"
+                }, 
+                "nopeaknosignal": {
+                    "id": 5, 
+                    "output_name": "nopeaknosignal"
+                }, 
+                "nopeaksignal": {
+                    "id": 5, 
+                    "output_name": "nopeaksignal"
+                }, 
+                "peak": {
+                    "id": 5, 
+                    "output_name": "peak"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "nopeaknosignal"
+                }, 
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "nomethsignal"
+                }, 
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "lowmeth"
+                }, 
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "nopeaksignal"
+                }, 
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "genome"
+                }, 
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "nomethnosignal"
+                }, 
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "peak"
+                }, 
+                {
+                    "description": "runtime parameter for tool Classification BED", 
+                    "name": "himeth"
+                }
+            ], 
+            "label": null, 
+            "name": "Classification BED", 
+            "outputs": [
+                {
+                    "name": "classbed", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 755.5333251953125, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "classification_tabular", 
+            "tool_state": "{\"__page__\": 0, \"nopeaknosignal\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"nomethsignal\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"lowmeth\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"nopeaksignal\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"himeth\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"genome\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"nomethnosignal\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"peak\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.0", 
+            "type": "tool", 
+            "uuid": "95c0c3ae-91e9-48e8-8af2-778c946bf04a", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "content_id": "annotatr_claasification_bismark", 
+            "id": 7, 
+            "input_connections": {
+                "infile": {
+                    "id": 6, 
+                    "output_name": "classbed"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Annotatr classification", 
+                    "name": "infile"
+                }
+            ], 
+            "label": null, 
+            "name": "Annotatr classification", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 999.300048828125, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "annotatr_claasification_bismark", 
+            "tool_state": "{\"__page__\": 0, \"projectname\": \"\\\"mc_hmc\\\"\", \"__rerun_remap_job_id__\": null, \"group1\": \"\\\"NULL\\\"\", \"group0\": \"\\\"NULL\\\"\", \"genome\": \"\\\"hg19\\\"\", \"infile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"annot_type\": \"\\\"bismark\\\"\"}", 
+            "tool_version": "0.0", 
+            "type": "tool", 
+            "uuid": "1982180b-e755-4f74-9527-1f7742cf0a50", 
+            "workflow_outputs": []
+        }, 
+        "8": {
+            "annotation": "", 
+            "content_id": "bed_to_bigBed", 
+            "id": 8, 
+            "input_connections": {
+                "input1": {
+                    "id": 6, 
+                    "output_name": "classbed"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool BED-to-bigBed", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "BED-to-bigBed", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "bigbed"
+                }
+            ], 
+            "position": {
+                "left": 999.300048828125, 
+                "top": 313.76666259765625
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "bed_to_bigBed", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"settings\": \"{\\\"settingsType\\\": \\\"preset\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "991939ce-6276-4732-93a5-6b8ede1d6296", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "831f2bb3-be15-4ff3-bba6-6f3d1a15d2cb"
+}
