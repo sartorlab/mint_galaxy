@@ -168,18 +168,16 @@ Below is list of the tools required to install from shed_tools
   bismark v0.16.1 
   FastQC v0.11.5
   macs2 v2.1.0.20140616 (package_macs2_2_1_0_20151222' 
-	samtools(1.2):samtools v0.1.19 (samtools package 1.2 iuc and then samtools sort 1.2 by devteam )
-  sort sam_to_bam(devteams)
+  samtools(1.2):samtools v0.1.19 (samtools package 1.2 iuc and then samtools sort & same_to_bam 1.2 by devteam )
   trim_galore v0.4.1
   fastq groomer 
 ```
-Select the one required by mint pipeline. Version number are important. For .e.g for samtools its 1.9.
-If you want to use already created workflow then you will need to install exactly same the tools mentioned below.
+Version number are important while installing tools If you want to use already created workflow.
 
  
  [Top](#contents)
 
-Galaxy Installation: 
+
 
             
 
