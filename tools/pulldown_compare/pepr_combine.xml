@@ -1,0 +1,28 @@
+<tool id="peprcomb" name="Rule to combine PePr peaks for bigBed" version="0">
+  <description>This script ensures chip1 and chip2 peaks do not overlap and then combines the peaks and keeps track of their source</description>
+  <command interpreter="bash">
+    <![CDATA[
+      pepr_combine.sh $chippeak1 $chippeak2 $peprCombinedBB $chip1 $chip2 $PePrCombinedAnnt $fdr $pval
+    ]]>
+    </command>
+    <inputs>           
+       <param format="bed" name="chippeak1" type="data" label="PePr chip1 peaks"/>   
+       <param format="bed" name="chippeak2" type="data" label="PePr chip1 peaks"/>
+     
+       <param name="chip1" size="20" type="text" value="NA" label="CHIP1_NAME 1" help="CHIP_NAME_1 should be for the group with higher group number in the project annotation# file a"/>
+       <param name="chip2" size="20" type="text" value="NA" label="CHIP1_NAME 2" help="CHIP_NAME_2should be for the group with the lower group number"/>
+    
+
+    </inputs>
+    <outputs>
+       <data format="bed" name="peprCombinedBB" label="PePr Output for bigBed"/>
+       <data format="bed" name="PePrCombinedAnnt" label="PePr Poutput for Annotatr"/>	
+    </outputs>    
+    <help>
+<![CDATA[
+
+
+]]>
+  </help>
+  
+</tool>

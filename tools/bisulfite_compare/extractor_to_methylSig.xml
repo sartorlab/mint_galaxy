@@ -1,0 +1,15 @@
+<tool id="exttometh" name="Extractor to MethylSig" version="0.0">
+  
+
+    <description>Rule for methylSig input of bismark CpG report</description>      
+   <command detect_errors="exit_code"><![CDATA[
+   awk -f extractor_to_methylSig.awk | sort -T . -k2,2 -k3,3n > $output_file
+    ]]></command> 
+     <inputs>       
+	<param  name="cpg_rep" format="txt" type="data" label="CpG Report"/>       
+	
+   </inputs>
+   <outputs> 	
+        <data format="txt" name="output_file"  label="CpG_report_for_methylSig" />
+  </outputs>
+</tool>

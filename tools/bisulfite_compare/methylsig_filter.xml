@@ -1,0 +1,15 @@
+<tool id="methfil" name="Methylsig Filter" version="0.0">
+    <description>Rule for methylSig filtering for annotatr and bigWig</description>      
+   <command detect_errors="exit_code"><![CDATA[
+  awk -v OFS='\t' -v FDR=$fdr -v DIFF=$diff '$6 < FDR && sqrt($7^2) > DIFF { print $1, $2 - 1, $3, $7 }' $bismeth | sort -T . -k1,1 -k2,2n > $output_file
+    ]]></command> 
+     <inputs>       
+	<param  name="bismeth" format="tabular" type="data" label="bisulfite_methylSig"/>      
+        <param name="fdr"   size="20" type="float" min="0" max="0.5" value="0.05" label="FDR"/>
+       <param name="diff"   size="20" type="float" min="0" max="0.5" value="0" label="Difference"/> 
+	
+   </inputs>
+   <outputs> 	
+        <data format="tabular" name="output_file"  label="bisulfite_methylSig_filtered_output" />
+  </outputs>
+</tool>
