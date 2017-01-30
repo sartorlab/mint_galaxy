@@ -50,9 +50,9 @@ Once galaxy is installed properly on the server, you will need to make some chan
 Note that you have to restart Galaxy after modifying the configuration for changes to take effect. Sample galaxy.ini file is added into github config folder.
 
 
-#### Change_config_file_extensions
+#### Change_tool_config_extensions
 Copy tool_conf.xml.main into tool_conf.xml, shed_tool_conf.xml.sample into shed_tool_conf.xml file ,tool_data_table_conf.xml.sample into tool_data_table_conf.xml and tool_sheds_conf.xml.sample into tool_sheds_conf.xml.sample. 
-Change below parameters  in the galaxy.ini file: 
+and then change below parameters in the galaxy.ini file: 
 ```
 tool_config_file = config/tool_conf.xml, config/shed_tool_conf.xml
 retry_metadata_internally = False
@@ -64,8 +64,7 @@ tool_sheds_config_file = config/tool_sheds_conf.xml
 
 
 [Top](#contents)
-## Add tools
-
+## Add_tools
 ### Custom
   
 To add custom tools into galaxy, copy and paste below text into your tool_conf.xml file
@@ -129,8 +128,8 @@ To add custom tools into galaxy, copy and paste below text into your tool_conf.x
 
 ```
 
-and also copy all the folders from tools folder.
-For custom tools, back-end installation of tools is required . Refer to the install_tools.sh file on github.
+and then copy all the folders from tools folder.
+For custom tools, back-end installation of tools is required. Refer to the install_tools.sh file on github for manual installation.
 ```
   bash install_deps.sh
   ```
