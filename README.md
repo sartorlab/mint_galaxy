@@ -12,7 +12,7 @@ Galaxy pipeline for the Mint
 	* [Change tool_conf.xml file](#change_tool_config) 	
 * [Add tools](#add_tools)		
 	* [Custom tools](#custom)
-  * [Tool shed tools](#tool_shed)	
+	* [Tool shed tools](#tool_shed)	
 
 ## Installation
 
@@ -35,10 +35,10 @@ Galaxy instance main page will look like below when you go to http://127.0.0.1:8
 
 [Top](#contents)
 
-## Customize Galaxy Instance
+## Customize
 Once galaxy is installed properly on the server, you will need to make some changes in the galaxy instance in order to add custom tools: 
-### Change galaxy.ini file
-#### Add admin
+### Galaxy_ini
+#### Add_admin
  In order to add tools and manage galaxy, you will have to become admin of local instance. 
  For that create galaxy user by registering at galaxy web page. Give the user admin privileges like this: 
  You add the Galaxy login ( email ) to the Galaxy configuration file (config/galaxy.ini). 
@@ -50,7 +50,7 @@ Once galaxy is installed properly on the server, you will need to make some chan
 Note that you have to restart Galaxy after modifying the configuration for changes to take effect. Sample galaxy.ini file is added into github config folder.
 
 
-#### Change config file extensions
+#### Change_config_file_extensions
 Copy tool_conf.xml.main into tool_conf.xml, shed_tool_conf.xml.sample into shed_tool_conf.xml file ,tool_data_table_conf.xml.sample into tool_data_table_conf.xml and tool_sheds_conf.xml.sample into tool_sheds_conf.xml.sample. 
 Change below parameters  in the galaxy.ini file: 
 ```
@@ -66,7 +66,7 @@ tool_sheds_config_file = config/tool_sheds_conf.xml
 [Top](#contents)
 ## Add tools
 
-### Custom tools]
+### Custom
   
 To add custom tools into galaxy, copy and paste below text into your tool_conf.xml file
 ```
@@ -132,7 +132,7 @@ To add custom tools into galaxy, copy and paste below text into your tool_conf.x
 and also copy all the folders from tools folder.
 For custom tools, back-end installation of tools is required . Refer to the install_tools.sh file on github.
 ```
-  bash install/install_deps.sh
+  bash install_deps.sh
   ```
 	
 Below is the list of the custom tools needed for mint pipeline:
@@ -156,7 +156,7 @@ custom installation of these tools is required:
 ```
 
 
-### Tool shed tools
+### Tool_shed 
 
 Once you add admin email id into galaxy.ini file , you should be able to see admin tab in galaxy
 
