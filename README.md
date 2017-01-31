@@ -5,13 +5,12 @@ Galaxy pipeline for the Mint
 
 * [Overview](#overview)
 * [Galaxy Installation](#installation)
-* [Customize Galaxy Instance](#customize)
+* [Customize Galaxy Instance](#customize_galaxy)
 	* [Change galaxy.ini file](#galaxy_ini)
 		* [Add admin](#add_admin)
 		* [Change config file extensions](#change_config_file_extensions) 
-	* [Change tool_conf.xml file](#change_tool_config) 	
 * [Add tools](#add_tools)		
-	* [Custom tools](#custom)
+	* [Custom tools](#custom_tools)
 	* [Tool shed tools](#tool_shed)	
 
 ## Installation
@@ -35,7 +34,7 @@ Galaxy instance main page will look like below when you go to http://127.0.0.1:8
 
 [Top](#contents)
 
-## Customize
+## customize_galaxy
 Once galaxy is installed properly on the server, you will need to make some changes in the galaxy instance in order to add custom tools: 
 ### Galaxy_ini
 #### Add_admin
@@ -50,7 +49,7 @@ Once galaxy is installed properly on the server, you will need to make some chan
 Note that you have to restart Galaxy after modifying the configuration for changes to take effect. Sample galaxy.ini file is added into github config folder.
 
 
-#### Change_tool_config_extensions
+#### Change_config_file_extensions
 Copy tool_conf.xml.main into tool_conf.xml, shed_tool_conf.xml.sample into shed_tool_conf.xml file ,tool_data_table_conf.xml.sample into tool_data_table_conf.xml and tool_sheds_conf.xml.sample into tool_sheds_conf.xml.sample. 
 and then change below parameters in the galaxy.ini file: 
 ```
@@ -65,7 +64,7 @@ tool_sheds_config_file = config/tool_sheds_conf.xml
 
 [Top](#contents)
 ## Add_tools
-### Custom
+### Custom_tools
   
 To add custom tools into galaxy, copy and paste below text into your tool_conf.xml file
 ```
@@ -166,7 +165,7 @@ Below is list of the tools required to install from shed_tools
   bedtools v2.25.0
   bismark v0.16.1 
   FastQC v0.11.5
-  macs2 v2.1.0.20140616 (package_macs2_2_1_0_20151222' 
+  macs2 v2.1.0.20140616 (package_macs2_2_1_0_20151222)
   samtools(1.2):samtools v0.1.19 (samtools package 1.2 iuc and then samtools sort & same_to_bam 1.2 by devteam )
   trim_galore v0.4.1
   fastq groomer 
