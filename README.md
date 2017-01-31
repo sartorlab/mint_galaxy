@@ -83,6 +83,7 @@ To add custom tools into galaxy, copy and paste below text into your tool_conf.x
 <tool file=" pulldown_compare /pepr_peakCalling.xml" />
 <tool file=" pulldown_compare /ForMacsFile.xml" />
 <tool file=" pulldown_compare /pepr_combine.xml" />
+<tool file="pullc/merged_signal.xml" />
 </section>
 
 <section id="pulldown_sample" name="Mint-Pulldown Sample">
@@ -112,6 +113,13 @@ To add custom tools into galaxy, copy and paste below text into your tool_conf.x
    <tool file="sample_classification/sam_class_bedtools.xml" />
   <tool file="sample_classification/classification_bed.xml" />  
   </section>
+  
+  <section id="compare_classification" name="Mint-Compare-Classification">
+  <tool file="compare_classification/pulldown_comclass.xml" />
+  <tool file="compare_classification/bisulfite_comclass.xml" />
+  <tool file="compare_classification/classify_compare.xml" />  
+  </section>
+  
 
    <section id="mnuti" name="Mint-Utilities">
    <tool file="filters/wig_to_bigwig.xml" />
