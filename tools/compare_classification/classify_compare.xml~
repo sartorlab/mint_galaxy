@@ -1,0 +1,23 @@
+<tool id="comapre_classification_tabular" name="Classification BED" version="0.0">
+   
+
+    <description>Combined pulldown and bisulfite results for mint</description>      
+    <command interpreter="bash">classify_compare.sh $genome $bdmup $bdmdown $bnodmsig $bnodmnosig $pdmup $pdmdown $pnodmsig $pnodmnosig $classbed
+
+
+     </command>
+    <inputs>        
+	<param  name="bdmup" format="tabular" type="data" label="mc_hmc Bisulfite DMup"/>
+	<param  name="bdmdown" format="tabular" type="data" label="mc_hmc Bisulfite DMdown"/>
+	<param  name="bnodmsig" format="tabular" type="data" label="mc_hmc Bisulfite noDM signal"/>
+	<param  name="bnodmnosig" format="tabular" type="data" label="mc_hmc Bisulfite noDM nosignal"/>
+	<param  name="pdmup" format="tabular" type="data" label=" hmc Pulldown DMup"/>
+	<param  name="pdmdown" format="tabular" type="data" label=" hmc Pulldown DMdown"/>
+	<param  name="pnodmsig" format="tabular" type="data" label=" hmc Pulldown noDM signal"/>
+	<param  name="bnodmnosig" format="tabular" type="data" label=" hmc Pulldown noDM no signal"/>
+        <param format="tabular" name="genome" type="data" label="Genome file" />
+   </inputs>
+   <outputs>
+ 	<data format="bed" name="classbed" label="classification_bed"/>       
+  </outputs>
+</tool>

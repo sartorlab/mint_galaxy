@@ -1,0 +1,28 @@
+<tool id="mergsig" name="Rule to merge input signals from the two groups" version="0">
+  <description>Merge all the files from pulldown align step -output of Bedgraph file</description>
+  <command>
+    <![CDATA[
+	cat
+	#for $i, $s in enumerate( $input_GrpA )
+	   ${s.inputA}
+	#end for
+     | sort -T . -k1,1 -k2,2n | bedtools merge -d 20 | sort -T . -k1,1 -k2,2n > $mergerd_signal
+    ]]>
+    </command>
+    <inputs>  
+	     <repeat name="input_GrpA" title="Group A" min="1">
+		    <param name="inputA" type="data" label="input file" format="bedgraph"    help=""/>
+	    </repeat>
+
+    </inputs>
+    <outputs>
+       <data format="bed" name="mergerd_signal" label="Pulldown Merged Signal"/>       
+    </outputs>    
+    <help>
+<![CDATA[
+
+
+]]>
+  </help>
+  
+</tool>

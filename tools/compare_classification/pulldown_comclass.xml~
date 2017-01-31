@@ -1,0 +1,22 @@
+<tool id="bedtoolsformint" name="Combined all bedtools for mint" version="0.0">
+    <!-- Wrapper compatible with Bowtie version 2.2.4 -->
+
+    <description>combined all tools for mint</description>      
+    <command interpreter="bash">
+		runpulldownpiece.sh -chip1 $chip1 -chip2 $chip2 -mersig $mersig -dmup $dmup -dmdown $dmdown -nodmsig $nodmsig -nodmnosig $nodmnosig -fdr $fdr -diff $diff
+
+     </command>
+    <inputs>
+        
+	<param  name="chip1" format="bed" type="data" label="PePr chip1 peaks"/>
+	<param  name="chip2" format="bed" type="data" label="PePr chip2 peaks"/>
+	<param  name="mersig" format="bed" type="data" label="Pulldown merged signal"/>
+           
+   </inputs>
+    <outputs>
+       	<data format="tabular" name="dmup" label="Pulldown DMup"/>
+	<data format="tabular" name="dmdown" label="Pulldown DMdown"/>
+	<data format="tabular" name="nodmsig" label="Pulldown noDM_signal"/>
+	<data format="tabular" name="nodmnosig" label="Pulldown noDM nosignal"/>
+    </outputs> 
+</tool>

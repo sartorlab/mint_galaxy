@@ -1,0 +1,76 @@
+
+
+
+chip1=$2
+chip2=$4
+mersig=$6
+dmup=$8
+dmdown=${10}
+nodmsig=${12}
+nodmnosig=${14}
+fdr=${16}
+diff=${18}
+chrom_path=${20}
+
+
+dir=`mktemp -d` 
+echo ${dir}
+# tmp files
+tmp_up=${dir}/pulldown_tmp_up.txt
+tmp_down=${dir}/pulldown_tmp_down.txt
+
+
+
+
+# Intermediates for the pulldown piece
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_tmp_up.txt
+$(DIR_PULL_PEPR)/%_pulldown_tmp_up.txt : $(DIR_PULL_PEPR)/%_pulldown__PePr_chip1_peaks.bed
+awk -v OFS="\t" '{print $$1, $$2, $$3}' $chip1 | sort -T $(DIR_TMP) -k1,1 -k2,2n > $tmp_up
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_tmp_down.txt
+$(DIR_PULL_PEPR)/%_pulldown_tmp_down.txt : $(DIR_PULL_PEPR)/%_pulldown__PePr_chip2_peaks.bed
+       awk -v OFS="\t" '{print $$1, $$2, $$3}' $chip2| sort -T $(DIR_TMP) -k1,1 -k2,2n > $tmp_down
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_DMup.txt
+$(DIR_PULL_PEPR)/%_pulldown_DMup.txt : $(DIR_PULL_PEPR)/%_pulldown_tmp_up.txt $(DIR_PULL_PEPR)/%_pulldown_tmp_down.txt
+        $(PATH_TO_BEDOPS) --difference $^ > $@
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_DMdown.txt
+$(DIR_PULL_PEPR)/%_pulldown_DMdown.txt : $(DIR_PULL_PEPR)/%_pulldown_tmp_down.txt $(DIR_PULL_PEPR)/%_pulldown_tmp_up.txt
+        $(PATH_TO_BEDOPS) --difference $^ > $@
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_tmp_disjoint_DM.txt
+$(DIR_PULL_PEPR)/%_pulldown_tmp_disjoint_DM.txt : $(DIR_PULL_PEPR)/%_pulldown_DMup.txt $(DIR_PULL_PEPR)/%_pulldown_DMdown.txt
+        cat $^ | sort -T $(DIR_TMP) -k1,1 -k2,2n > $@
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_tmp_disjoint_noDM.txt
+$(DIR_PULL_PEPR)/%_pulldown_tmp_disjoint_noDM.txt: $(DIR_PULL_PEPR)/%_pulldown_tmp_disjoint_DM.txt
+        $(PATH_TO_BEDTOOLS) complement -i $< -g <(sort -T $(DIR_TMP) -k1,1 $(CHROM_PATH)) \
+        |awk -v OFS="\t" '$$2 != $$3 {print $$0}' \
+        > $@
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_tmp_signal.txt
+$(DIR_PULL_PEPR)/%_pulldown_tmp_signal.txt : $(DIR_PULL_PEPR)/%_pulldown_merged_signal.bed
+        cp $< $@
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_tmp_nosignal.txt
+$(DIR_PULL_PEPR)/%_pulldown_tmp_nosignal.txt : $(DIR_PULL_PEPR)/%_pulldown_tmp_signal.txt
+        $(PATH_TO_BEDTOOLS) complement -i $< -g <(sort -T $(DIR_TMP) -k1,1 $(CHROM_PATH)) \
+        |awk -v OFS="\t" '$$2 != $$3 {print $$0}' \
+        > $@
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_noDM_signal.txt
+$(DIR_PULL_PEPR)/%_pulldown_noDM_signal.txt : $(DIR_PULL_PEPR)/%_pulldown_tmp_disjoint_noDM.txt $(DIR_PULL_PEPR)/%_pulldown_tmp_signal.txt
+        $(PATH_TO_BEDTOOLS) intersect -a $(word 1, $^) -b $(word 2, $^) | sort -T $(DIR_TMP) -k1,1 -k2,2n > $@
+
+.INTERMEDIATE : $(DIR_PULL_PEPR)/%_pulldown_noDM_nosignal.txt
+$(DIR_PULL_PEPR)/%_pulldown_noDM_nosignal.txt : $(DIR_PULL_PEPR)/%_pulldown_tmp_disjoint_noDM.txt $(DIR_PULL_PEPR)/%_pulldown_tmp_nosignal.txt
+        $(PATH_TO_BEDTOOLS) intersect -a $(word 1, $^) -b $(word 2, $^) | sort -T $(DIR_TMP) -k1,1 -k2,2n > $@
+
+
+
+
+
+
+
+

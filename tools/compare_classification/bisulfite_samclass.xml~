@@ -1,0 +1,29 @@
+<tool id="biscomclass" name="Intermediates for the bisulfite piece" version="0">
+  <description>CIntermediates for the bisulfite piece</description>
+  <command>
+    <![CDATA[
+       
+runbibulfitepiece.sh -input $methylsig -dmup $dmup -dmdown $dmdown -nodmsig $nodmsig -nodmnosig $nodmnosig -fdr $fdr -diff $diff
+       
+    ]]>
+    </command>
+    <inputs>
+        <param format="txt" name="methylsig" type="data" label="Output from the MethylSig"/>  
+        <param format="txt" name="CHROM_PATH" type="data" label=" chromInfo_hg19.txt file"/>  
+        <param name="fdr" type="integer" label="Specify FDR" value="0" help=""/>         
+	<param name="diff" type="integer" label="Specify Difference" value="0" help=""/> 
+    </inputs>
+    <outputs>
+       	<data format="tabular" name="dmup" label="bisulfite DMup"/>
+	<data format="tabular" name="dmdown" label="bisulfite DMdown"/>
+	<data format="tabular" name="nodmsig" label="bisulfite noDM_signal"/>
+	<data format="tabular" name="nodmnosig" label="bisulfite noDM nosignal"/>
+    </outputs>    
+    <help>
+<![CDATA[
+Intermediates for the bisulfite piece
+
+]]>
+  </help>
+  
+</tool>

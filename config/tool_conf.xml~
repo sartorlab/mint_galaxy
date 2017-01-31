@@ -168,8 +168,7 @@
    <section id="mnuti" name="Mint-Utilities">
    <tool file="filters/wig_to_bigwig.xml" />
    <tool file="filters/bed_to_bigbed.xml" />
-   <tool file="mnuti/classify_simple.xml" />
-   <tool file="mnuti/annotatr_claasification.xml" />
+   <tool file="mnuti/classify_simple.xml" />  
    <tool file="mnuti/annotatr_claasification_bismark.xml" />
    <tool file="mnuti/claasify_to_annotatr.xml" /> 
   

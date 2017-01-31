@@ -112,49 +112,46 @@
     <tool file="plotting/boxplot.xml" />
     <tool file="maf/vcf_to_maf_customtrack.xml" />
   </section>
-  <label id="mintools" text="Mint Tools" />  
-  <section id="mintprep" name="Mint-Preprocessing">
-  </section>
-
-   <section id="pullali" name="Mint-Pulldown Align">      
-   <tool file="pullali/process_pulldown_single.xml" /> 
-   <tool file="pullali/pullalimergeBed.xml" /> 
-   <tool file="pullali/pullaligenomeCoverageBed.xml" /> 
- </section>
-
-
-  <section id="pullcomparison" name="Mint-Pulldown Compare">
-   <tool file="pullc/pepr.xml" />
-   <tool file="pullc/pepr_peakCalling.xml" />  
-   <tool file="pullc/pepr_combine.xml" />
-  </section>
-
-  <section id="pullsam" name="Mint-Pulldown Sample">
-	<tool file="pullsam/ForMacsFile.xml" />
-  </section>
-
-
-  <section id="bisalign" name="Mint-Bisulfite Align">  
-  <tool file="bisulfilte_align/bismarkToBedGraph.xml" />
-  </section>
-
-  <section id="bissam" name="Mint-Bisulfite Sample">  
-  <tool file="bisulfilte_sample/bismarkToBedGraph.xml" />
-  <tool file="bisulfilte_sample/bismarkToAnnotatr.xml" />
-  </section>
  
 
+<label id="mintools" text="Mint Tools" />  
+<section id="mintprep" name="Mint-Preprocessing">
+</section>
+
+<section id="pulldown_alignment" name="Mint-Pulldown Align">      
+<tool file="pulldown_alignment/process_pulldown_single.xml" /> 
+<tool file="pulldown_alignment/pullalimergeBed.xml" /> 
+<tool file="pulldown_alignment/pullaligenomeCoverageBed.xml" /> 
+</section>
+
+<section id="pulldown_compare" name="Mint-Pulldown Compare">
+<tool file=" pulldown_compare /pepr.xml" />
+<tool file=" pulldown_compare /pepr_peakCalling.xml" />
+<tool file=" pulldown_compare /ForMacsFile.xml" />
+<tool file=" pulldown_compare /pepr_combine.xml" />
+<tool file="pullc/merged_signal.xml" />
+</section>
+
+<section id="pulldown_sample" name="Mint-Pulldown Sample">
+<tool file="pulldown_sample/ForMacsFile.xml" />
+</section>
+
+<section id="bisalign" name="Mint-Bisulfite Align">  
+</section>
+
+<section id="bissam" name="Mint-Bisulfite Sample">  
+ <tool file="bisulfilte_sample/bismarkToBedGraph.xml" />
+ <tool file="bisulfilte_sample/bismarkToAnnotatr.xml" />
+ </section>
 
   <section id="biscomp" name="Mint-Bisulfite Compare">
-  <tool file="biscomp/methylSigReadData.xml" />
-  <tool file="biscomp/methylSig_to_annotatr.xml" /> 
-  <tool file="biscomp/annotatr_bis_alignR.xml" />
-  <tool file="biscompbis/to_bGphToBg.xml" />
+  <tool file=" bisulfilte_compare/methylSigReadData.xml" />
+  <tool file=" bisulfilte_compare /methylSig_to_annotatr.xml" /> 
+  <tool file=" bisulfilte_compare /annotatr_bis_alignR.xml" />
+  <tool file=" bisulfilte_compare /to_bGphToBg.xml" />
   </section>
 
-
   <section id="minclass" name="Mint-Classification">
-   
   </section>
 
   <section id="sample_classification" name="Mint-Sample-Classification">
@@ -163,22 +160,22 @@
   <tool file="sample_classification/classification_bed.xml" />  
   </section>
 
+  <section id="compare_classification" name="Mint-Compare-Classification">
+  <tool file="compare_classification/pulldown_comclass.xml" />
+  <tool file="compare_classification/bisulfite_comclass.xml" />
+  <tool file="compare_classification/classify_compare.xml" />  
+  </section>
 
 
    <section id="mnuti" name="Mint-Utilities">
    <tool file="filters/wig_to_bigwig.xml" />
    <tool file="filters/bed_to_bigbed.xml" />
-   <tool file="mnuti/classify_simple.xml" />  
-   <tool file="mnuti/annotatr_claasification_bismark.xml" />
-   <tool file="mnuti/claasify_to_annotatr.xml" /> 
-  
-    
+   <tool file=" mint_utilities /classify_simple.xml" />  
+   <tool file=" mint_utilities /annotatr_claasification_bismark.xml" />
+   <tool file=" mint_utilities /claasify_to_annotatr.xml" /> 
   </section>
-
-  <section id="btools" name="Bedtools">
- 
+  <section id="btools" name="Bedtools"> 
   </section>
-
   <section id="stool" name="Samtools">
   </section>
 
