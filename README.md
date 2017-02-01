@@ -12,6 +12,8 @@ Galaxy pipeline for the Mint
 * [Add tools](#add_tools)		
 	* [Custom tools](#custom_tools)
 	* [Tool shed tools](#tool_shed)	
+* [Import workflow](#import_workflow)	
+	
 
 ## Installation
 
@@ -179,9 +181,12 @@ Below is list of the tools required to install from shed_tools
   fastq groomer 
 ```
 Version number are important while installing tools If you want to use already created workflow.
-
+NOTE: Sometimes tool shed tools are failed to install at the backend(e.g. multiqc). You can refer to install.sh script in repository to install tools.This way you will submission form from tool shed and backedn will run the version of the tool you need.
  
  [Top](#contents)
+ 
+## Import_workflow
+
 
 
 
