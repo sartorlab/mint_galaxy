@@ -186,6 +186,14 @@ NOTE: Sometimes tool shed tools are failed to install at the backend(e.g. multiq
  [Top](#contents)
  
 ## Import_workflow
+To import mint workflow click on the workflow tab and then import workflow
+
+Wokflow files are stored in data folder with .ga extension. Workflow needs all the tools installed before 
+Importing . 
+To run the pulldown alignment step in mint workflow, either import the workflow(Galaxy-Workflow-pulldown_align.ga) or create one using create workflow option.
+
+![image](https://github.com/psnehal/GalaxyScreenshots/blob/master/pulldown_Align.png "Pulldown Align" {width=40px height=400px})
+
 
 
 
