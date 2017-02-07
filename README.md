@@ -203,6 +203,8 @@ Wokflow files are stored in data folder with .ga extension. Workflow needs all t
 Importing . 
 To run the pulldown alignment step in mint workflow, either import the workflow(Galaxy-Workflow-pulldown_align.ga) or create one using create workflow option.
 
+Below are the images of the all the workflows in Mint Pipleline. Each tool is marked according to the source of the tool either shed tool (red) ,custom tool(blue) or prebuilt(yellow).
+
 <img src="https://github.com/psnehal/GalaxyScreenshots/blob/master/pulldown_Align.png" width="100">
 <img src="https://github.com/psnehal/GalaxyScreenshots/blob/master/pulldown_sample.png" width="100">
 <img src="https://github.com/psnehal/GalaxyScreenshots/blob/master/pulldown_compare.png" width="100">
