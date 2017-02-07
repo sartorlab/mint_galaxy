@@ -145,11 +145,11 @@ For custom tools, back-end installation of tools is required. Refer to the insta
   
 Also for some of the tools, user needs to change the path of the R scripts as those are coded according to admin server.
 
-⋅⋅* Add the location of genome file in bowtie tool. Go to pulldown align folder and edit  multi_output_configured_4.sh file
+* Add the location of genome file in bowtie tool. Go to pulldown align folder and edit  multi_output_configured_4.sh file
 
-⋅⋅* Go to Mint utilities folder and edit annotatr_claasification_bismark.xml and classify_simple.xml file and  add the path for annotatr_classification_bismark.R  and classify_simple. R file respectively.
+* Go to Mint utilities folder and edit annotatr_claasification_bismark.xml and classify_simple.xml file and  add the path for annotatr_classification_bismark.R  and classify_simple. R file respectively.
 
-⋅⋅* GO to bisulfite_compare folder and edit the file annotatr_bis_alignR.xml. Add the path for annotatr_bis_alignR
+* GO to bisulfite_compare folder and edit the file annotatr_bis_alignR.xml. Add the path for annotatr_bis_alignR
 
 
 
