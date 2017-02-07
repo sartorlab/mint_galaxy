@@ -1,0 +1,13 @@
+<tool id="to_bedgraphtobigwig" name="From MethylSig To Bedgraph-to-bigWig" version="0.0">
+    <!-- Wrapper compatible with Bowtie version 2.2.4 -->
+
+    <description>combined all tools for mint</description>      
+    <command> <![CDATA[ awk -v OFS='\t' '$$5 < 0.05 {print $$1, $$2, $$3, $$7 }' $input | sort -T . -k1,1 -k2,2n > $output
+	]]></command>
+    <inputs>        
+        <param format="txt" name="input" type="data" label="mc_hmc_bisulfite_methylSig"/> 
+   </inputs>
+   <outputs>
+ 	<data format="txt" name="output" label="tmp_mc_hmc_bisulfite_methylSig"/>       
+  </outputs>
+</tool>

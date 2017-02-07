@@ -1,0 +1,68 @@
+<tool id="bis_custom" name="Bismark Meth. Extractor custom versio" version="0.16.0">
+    <!-- Wrapper compatible with Bismark version 0.10 -->
+    <description>bis custom versionk</description>
+    <!--<version_command>bismark_methylation_extractor version</version_command>-->
+    <requirements>
+        <requirement type="set_environment">SCRIPT_PATH</requirement>
+        <requirement type="package" version="0.12.8">bowtie</requirement>
+        <requirement type="package" version="2.1.0">bowtie2</requirement>
+    </requirements>
+   
+    <command interpreter="python">
+<![CDATA[
+        bismark_methylation_extractor_custom.py
+        --infile $input
+        --bismark_path \$SCRIPT_PATH
+        #if $singlePaired.sPaired == "single":
+            --single-end
+        #else:
+            --paired-end
+            $singlePaired.no_overlap
+        #end if
+        #if str($ignore_bps) != "0":
+           --ignore $ignore_bps
+        #end if
+       --output_dir ${$html_file.files_path}
+       --output_file ${$html_file}
+       --report-file $o_report
+
+       
+
+]]>
+    </command>
+    <inputs>
+        <!-- Input Parameters -->
+        <param name="input" type="data" format="sam,bam" label="SAM/BAM file from Bismark bisulfite mapper" />
+        <conditional name="singlePaired">
+            <param name="sPaired" type="select" label="Is this library mate-paired?">
+              <option value="single">Single-end</option>
+              <option value="paired">Paired-end</option>
+            </param>
+            <when value="single" />
+            <when value="paired">
+           <param name="no_overlap" type="boolean" truevalue="--no-overlap" falsevalue="" checked="False" label="This option avoids scoring overlapping methylation calls twice, in case of overlapping read one and read two" help="" />
+            </when>
+        </conditional>
+       <param name="ignore_bps" type="integer" value="0" label="Ignore the first N bp when processing the methylation call string" />
+      
+
+    </inputs>
+    <outputs>
+   
+        <data format="tabular" name="o_report" label="${tool.name} on ${on_string}: Report file">
+          <filter> ( report is True ) </filter>
+        </data>
+        <data format="html" name="html_file"  label="test.html" />  	
+         </outputs>
+
+    <tests>
+    </tests>
+
+    <help>
+<![CDATA[
+
+
+
+]]>
+  </help>
+</tool>

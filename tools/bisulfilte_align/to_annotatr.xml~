@@ -1,0 +1,12 @@
+<tool id="to_annotatr" name="From Bismark to annotatr" version="0.0">
+    <!-- Wrapper compatible with Bowtie version 2.2.4 -->
+
+    <description>combined all tools for mint</description>      
+    <command> <![CDATA[awk -f to_annotatr.awk $reportin | sort -T . -k1,1 -k2,2n > $output]]></command>
+    <inputs>        
+        <param format="txt" name="reportin" type="data" label="trimmed.fq.gz_bismark_bt2.CpG_report.txt"/> 
+   </inputs>
+   <outputs>
+ 	<data format="txt" name="output" label="pulldown_classification_sample.bed"/>       
+  </outputs>
+</tool>
