@@ -183,13 +183,20 @@ Once you add admin email id into galaxy.ini file , you should be able to see adm
 Click on the search tool shed option and enter the name of tool you want to install .
 Below is list of the tools required to install from shed_tools
 ```
-  bedtools v2.25.0
-  bismark v0.16.1 
-  FastQC v0.11.5
-  macs2 v2.1.0.20140616 (package_macs2_2_1_0_20151222)
-  samtools(1.2):samtools v0.1.19 (samtools package 1.2 iuc and then samtools sort & same_to_bam 1.2 by devteam )
-  trim_galore v0.4.1
-  fastq groomer 
+
+| Tools        | Source               | Version   |Section To install   |
+| -------------|:--------------------:| -----:  |    -----:             |
+| bedtools     | iuc 8e6b7c3597a8     | v.2.25.0 | Bedtools		|
+| bismark      | iuc c9bd782f5342     | v0.16.1  | Mint-Bisulfite Align |
+| FastQC       | devteam 3fdc1a74d866 | v0.11.4  | Mint-Preprocessing   |
+| MACS2        | iuc 6d4babad010f     | v2.1.0   | Mint-Pulldown Sample |
+| samtools_sort| devteam a430da4f04cd | v1.2     | Samtools             |
+| sort_to_bam  | devteam 881e16ad05c6 | v1.2     | Samtools             |
+| trim_galore  | bgruening f1e71aeaa923| v0.4.2 |  Mint-Preprocessing   |
+| fastq groomer| devteam e4d28c94242d | v1.0.4   | Mint-Preprocessing   |
+
+
+
 ```
 Version number are important while installing tools If you want to use already created workflow.
 NOTE: Sometimes tool shed tools are failed to install at the backend(e.g. multiqc). You can refer to install.sh script in repository to install tools.This way you will submission form from tool shed and backedn will run the version of the tool you need.
