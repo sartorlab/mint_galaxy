@@ -21,7 +21,7 @@ Download the galaxy local  instance from the using below command.
 ```
 git clone -b release_16.10 https://github.com/galaxyproject/galaxy.git
 ```
-Refer to https://new.galaxyproject.org/Admin/GetGalaxy/  link for additional questions. 
+Refer to https://galaxyproject.org/admin/get-galaxy/  link for additional questions. 
 Output for the above command should look like below:
 ![Galaxy Command Line](https://github.com/psnehal/GalaxyScreenshots/blob/master/galaxyscreenshot0.png)
 
